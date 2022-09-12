@@ -9,28 +9,28 @@ class ApplicationController < Sinatra::Base
   
   patch "/payments/:id" do
     payment = Payment.find(params[:id])
-    payment.update(cost: params[:cost])
+    payment.update(budget: params[:budget])
     payment.to_json
   end
-  # get "/expenses" do
-  #  expenses = Expense.all.order (:created_at) 
-  #  expenses.to_json
-  # end
-  #  post "/expenses" do
-  #   expense = Expense.create(amount: params[:amount], title: params[:title],currency: params[:currency])
-  #   expense.to_json
-  # end
+  get "/expenses" do
+   expenses = Expense.all.order (:created_at) 
+   expenses.to_json
+  end
+   post "/expenses" do
+    expense = Expense.create(name: params[:name], cost: params[:cost],payment_id: params[:payment_id])
+    expense.to_json
+  end
   
-  # patch "/expenses/:id" do
-  #   expense = Expense.find(params[:id])
-  #   expense.update(amount: params[:amount], title: params[:title])
-  #   expense.to_json
-  # end
+  patch "/expenses/:id" do
+    expense = Expense.find(params[:id])
+    expense.update(name: params[:name], cost: params[:cost])
+    expense.to_json
+  end
   
-  # delete "/expenses/:id" do
-  #   expense = Expense.find(params[:id])
-  #   expense.destroy
-  #   expense.to_json
-  # end
+  delete "/expenses/:id" do
+    expense = Expense.find(params[:id])
+    expense.destroy
+    expense.to_json
+  end
   
 end

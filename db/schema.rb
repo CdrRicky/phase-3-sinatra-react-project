@@ -10,20 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_07_112640) do
+ActiveRecord::Schema.define(version: 2022_09_12_064822) do
 
   create_table "expenses", force: :cascade do |t|
-    t.string "title"
-    t.integer "amount"
-    t.string "currency"
+    t.string "name"
+    t.integer "cost"
+    t.integer "payment_id"
   end
 
   create_table "payments", force: :cascade do |t|
-    t.string "budget"
+    t.integer "budget"
     t.integer "amount_remaining"
-    t.integer "spent"
-    t.string "currency"
-    t.integer "cost"
+    t.integer "spent_so_far"
   end
 
 end
